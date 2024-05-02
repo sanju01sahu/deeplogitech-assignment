@@ -24,15 +24,15 @@ const server = http.createServer((req, res) => {
       // Concatenate the chunks of data received
       response
         .on("data", (chunk) => {
-          // console.log("line 26",chunk)console.log("line 22",body)
+          // console.log("line 26",chunk);console.log("line 22",body);
           body.push(chunk);
         })
         .on("end", () => {
           body = Buffer.concat(body).toString();
-          // console.log("line 31",body)
-          // Extract elements with class "latest-stories__item"
+          // console.log("line 31",body);
+          
           const latestStories = extractLatestStories(body);
-          // Send the extracted data as JSON response
+          // Send the data as JSON response
           res.setHeader("Content-Type", "application/json");
           res.end(JSON.stringify(latestStories));
         });
@@ -59,22 +59,19 @@ function extractLatestStories(html) {
   const latestStories = [];
   const regex = /<li class="latest-stories__item">([\s\S]*?)<\/li>/g;
   let match;
-  //   console.log(regex.exec(html))
+  //   console.log(regex.exec(html));
   while ((match = regex.exec(html)) !== null && latestStories.length < 6) {
     const liContent = match[1];
     // console.log(liContent);
     const linkRegex = /<a href="([^"]+)">\s*<h3[^>]*>([^<]+)<\/h3>\s*<\/a>/;
     const linkMatch = liContent.match(linkRegex);
+    // console.log(linkMatch[0]);
+    // console.log(linkMatch[1], linkMatch[2]);
     if (linkMatch) {
       const link = `https://time.com` + linkMatch[1];
       const title = linkMatch[2].trim();
       latestStories.push({ title, link });
     }
-
-    // Check if it's the last iteration or if we've already collected 6 stories
-    // if (!regex.exec(html) || latestStories.length >= 6) {
-    //   break;
-    // }
   }
   return latestStories;
 }
