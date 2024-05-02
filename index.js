@@ -72,9 +72,9 @@ function extractLatestStories(html) {
     }
 
     // Check if it's the last iteration or if we've already collected 6 stories
-    if (!regex.exec(html) || latestStories.length >= 6) {
-      break;
-    }
+    // if (!regex.exec(html) || latestStories.length >= 6) {
+    //   break;
+    // }
   }
   return latestStories;
 }
