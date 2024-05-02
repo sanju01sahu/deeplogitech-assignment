@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
   const url = parse(req.url);
 
   // Check if the request path matches the desired endpoint
-  if (url.pathname === "/getLatestStories") {
+  if (url.pathname === "/getTimeStories") {
     // Make a GET request to time.com
     const options = {
       hostname: "time.com",
