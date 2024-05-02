@@ -1,0 +1,13 @@
+{
+  "name": "deeplogitech-assignment",
+  "version": "1.0.0",
+  "description": "This is a project for getting the data from a particular website and extracting certain parts of it and returning it in Jason format the server works for only one particular path.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
+  },
+  "keywords": [],
+  "author": "Sanjay Sahu",
+  "license": "ISC"
+}
