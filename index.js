@@ -57,7 +57,6 @@ const server = http.createServer((req, res) => {
 // Function to extract latest stories from HTML content
 function extractLatestStories(html) {
   const latestStories = [];
-  //   const regex = /<a href="([^"]+)">\s*<h3[^>]*>([^<]+)<\/h3>\s*<\/a>/g;
   const regex = /<li class="latest-stories__item">([\s\S]*?)<\/li>/g;
   let match;
   //   console.log(regex.exec(html))
@@ -73,11 +72,11 @@ function extractLatestStories(html) {
     }
 
     // Check if it's the last iteration or if we've already collected 6 stories
-    // if (!regex.exec(html) || latestStories.length >= 6) {
+    if (!regex.exec(html) || latestStories.length >= 6) {
     // Sort the latest stories based on time (not implemented in this example)
     // If sorting by time is needed, you'd need to extract the timestamp from each story and sort accordingly
-    //   break;
-    // }
+      break;
+    }
   }
   return latestStories;
 }
