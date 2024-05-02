@@ -66,15 +66,13 @@ function extractLatestStories(html) {
     const linkRegex = /<a href="([^"]+)">\s*<h3[^>]*>([^<]+)<\/h3>\s*<\/a>/;
     const linkMatch = liContent.match(linkRegex);
     if (linkMatch) {
-      const link = `https://time.com`+linkMatch[1];
+      const link = `https://time.com` + linkMatch[1];
       const title = linkMatch[2].trim();
       latestStories.push({ title, link });
     }
 
     // Check if it's the last iteration or if we've already collected 6 stories
     if (!regex.exec(html) || latestStories.length >= 6) {
-    // Sort the latest stories based on time (not implemented in this example)
-    // If sorting by time is needed, you'd need to extract the timestamp from each story and sort accordingly
       break;
     }
   }
