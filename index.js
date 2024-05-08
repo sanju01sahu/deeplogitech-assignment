@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
         .on("end", () => {
           body = Buffer.concat(body).toString();
           // console.log("line 31",body);
-          
+
           const latestStories = extractLatestStories(body);
           // Send the data as JSON response
           res.setHeader("Content-Type", "application/json");
